@@ -23,7 +23,7 @@ namespace SnakeAndLadderDay_4
             Random die = new Random();     //creatting random object from random class
             Random options = new Random();
 
-            while (position <= FINAL)
+            while (position < FINAL)
             {
                 int dice = die.Next(1, 7);       //simulating the die throw 
                 Console.WriteLine("The number on this die roll is: " + dice);
@@ -37,7 +37,16 @@ namespace SnakeAndLadderDay_4
                 else if (opt == LADDER)
                 {
                     position = position + dice;
-                    Console.WriteLine("Ladder! new postion-- " + position);
+                    if (position > 100)
+                    {
+                        Console.WriteLine("Try Again, throw exceeded 100!");
+                        position = position - dice;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ladder! new postion-- " + position);
+                    }
+
                 }
                 else
                 {
